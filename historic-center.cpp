@@ -72,6 +72,32 @@ void drawHouse(){
             glVertex3f(-2.5, -1.5, 1.1);
         glEnd();
 
+        glColor3f(0.7f, 0.7f, 0.7f);
+        glBegin(GL_QUADS);  // Static Door 3
+            glVertex3f(1.0, 0.0005, 1.1);
+            glVertex3f(2.0, 0.0005, 1.1);
+            glVertex3f(2.0, -1.5, 1.1);
+            glVertex3f(1.0, -1.5, 1.1);
+        glEnd();
+
+        glColor3f(0.7f, 0.7f, 0.7f);
+        glBegin(GL_QUADS);  // Static Door 4
+            glVertex3f(2.5, 0.0005, 1.1);
+            glVertex3f(3.5, 0.0005, 1.1);
+            glVertex3f(3.5, -1.5, 1.1);
+            glVertex3f(2.5, -1.5, 1.1);
+        glEnd();
+
+        // Front Windows
+
+        glColor3f(0.7f, 0.7f, 0.7f);
+        glBegin(GL_QUADS);  // Static Window 1
+            glVertex3f(2.5, 3.0, -1);
+            glVertex3f(3.5, 3.0, -1);
+            glVertex3f(3.5, 4.5, -1);
+            glVertex3f(2.5, 4.0, -1);
+        glEnd();
+
     glPopMatrix();
 
     // Back side
@@ -176,7 +202,6 @@ void drawHouse(){
             glVertex3f(-5, -1.5, -25);
             glVertex3f(-5, -1.5, -15);
         glEnd();
-
 
         glColor3f(PINK);
         glBegin(GL_QUADS);  // Mid Right wall
