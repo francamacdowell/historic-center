@@ -3,6 +3,7 @@
 #include <math.h>
 
 #define PINK 1.0, 0.70, 0.75
+#define WHITE 1.0, 1.0, 1.0
 
 // actual vector representing the camera's direction
 float lx=0.0f, lz=-1.0f;
@@ -56,47 +57,74 @@ void drawHouse(){
         //     glVertex3f(-2.2,-0.1,1.25);
         // glEnd();
 
-        glColor3f(0.7f, 0.7f, 0.7f);
+        glColor3f(WHITE);
         glBegin(GL_QUADS);  // Static Door 1
-            glVertex3f(-1, 0.0005, 1.1);
-            glVertex3f(-2, 0.0005, 1.1);
+            glVertex3f(-1, 0.3, 1.1);
+            glVertex3f(-2, 0.3, 1.1);
             glVertex3f(-2, -1.5, 1.1);
             glVertex3f(-1, -1.5, 1.1);
         glEnd();
 
-        glColor3f(0.7f, 0.7f, 0.7f);
+        glColor3f(WHITE);
         glBegin(GL_QUADS);  // Static Door 2
-            glVertex3f(-2.5, 0.0005, 1.1);
-            glVertex3f(-3.5, 0.0005, 1.1);
+            glVertex3f(-2.5, 0.3, 1.1);
+            glVertex3f(-3.5, 0.3, 1.1);
             glVertex3f(-3.5, -1.5, 1.1);
             glVertex3f(-2.5, -1.5, 1.1);
         glEnd();
 
-        glColor3f(0.7f, 0.7f, 0.7f);
+        glColor3f(WHITE);
         glBegin(GL_QUADS);  // Static Door 3
-            glVertex3f(1.0, 0.0005, 1.1);
-            glVertex3f(2.0, 0.0005, 1.1);
+            glVertex3f(1.0, 0.3, 1.1);
+            glVertex3f(2.0, 0.3, 1.1);
             glVertex3f(2.0, -1.5, 1.1);
             glVertex3f(1.0, -1.5, 1.1);
         glEnd();
 
-        glColor3f(0.7f, 0.7f, 0.7f);
+        glColor3f(WHITE);
         glBegin(GL_QUADS);  // Static Door 4
-            glVertex3f(2.5, 0.0005, 1.1);
-            glVertex3f(3.5, 0.0005, 1.1);
+            glVertex3f(2.5, 0.3, 1.1);
+            glVertex3f(3.5, 0.3, 1.1);
             glVertex3f(3.5, -1.5, 1.1);
             glVertex3f(2.5, -1.5, 1.1);
         glEnd();
 
         // Front Windows
 
-        glColor3f(0.7f, 0.7f, 0.7f);
+        glColor3f(WHITE);
         glBegin(GL_QUADS);  // Static Window 1
-            glVertex3f(2.5, 3.0, -1);
-            glVertex3f(3.5, 3.0, -1);
-            glVertex3f(3.5, 4.5, -1);
-            glVertex3f(2.5, 4.0, -1);
+            glVertex3f(2.5, 1.0, 1.1);
+            glVertex3f(3.5, 1.0, 1.1);
+            glVertex3f(3.5, 2.2, 1.1);
+            glVertex3f(2.5, 2.2, 1.1);
         glEnd();
+
+        glColor3f(WHITE);
+        glBegin(GL_QUADS);  // Static Window 2
+            glVertex3f(1.0, 1.0, 1.1);
+            glVertex3f(2.0, 1.0, 1.1);
+            glVertex3f(2.0, 2.2, 1.1);
+            glVertex3f(1.0, 2.2, 1.1);
+        glEnd();
+
+        glColor3f(WHITE);
+        glBegin(GL_QUADS);  // Static Window 3
+            glVertex3f(-2.5, 1.0, 1.1);
+            glVertex3f(-3.5, 1.0, 1.1);
+            glVertex3f(-3.5, 2.2, 1.1);
+            glVertex3f(-2.5, 2.2, 1.1);
+        glEnd();
+
+
+        glColor3f(WHITE);
+        glBegin(GL_QUADS);  // Static Window 1
+            glVertex3f(-1, 1.0, 1.1);
+            glVertex3f(-2, 1.0, 1.1);
+            glVertex3f(-2, 2.2, 1.1);
+            glVertex3f(-1, 2.2, 1.1);
+        glEnd();
+
+
 
     glPopMatrix();
 
@@ -228,7 +256,7 @@ void drawDoor() {
 		glTranslatef(-0.3f, 0.5f, 1);
         glRotatef (door_angle, 0,1,0);
     	glTranslatef(0.3f, 0, 0);
-        glColor3f(0.7f, 0.7f, 0.7f);
+        glColor3f(WHITE);
         glScalef(0.6, 1.1, 0.1f);
         glutSolidCube(1.0);
     glPopMatrix();
