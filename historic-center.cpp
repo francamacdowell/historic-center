@@ -3,7 +3,11 @@
 #include <math.h>
 
 #define PINK 1.0, 0.70, 0.75
+#define PINK_HALL 1.0, 0.80, 0.75
 #define WHITE 1.0, 1.0, 1.0
+#define BLACK 0.0, 0.0, 0.0
+
+GLUquadricObj *quadratic;
 
 // actual vector representing the camera's direction
 float lx=0.0f, lz=-1.0f;
@@ -18,8 +22,10 @@ float angle = 0.0f;
 
 void init(void) {
     // sky color
+    quadratic = gluNewQuadric();
     glClearColor(0.0, 0.7, 1.0, 1.0);
 }
+
 
 void drawHouse(){
 
@@ -131,7 +137,7 @@ void drawHouse(){
     // Back side
     glPushMatrix();
     glTranslatef(0.0f, 1.3f, 0.0f);
-        glColor3f(PINK);
+        glColor3f(PINK_HALL);
         glBegin(GL_QUADS);  // Wall 1
             glVertex3f(-4,2.6,-10.0);
             glVertex3f(-0.88,2.6,-10.0);
@@ -139,20 +145,12 @@ void drawHouse(){
             glVertex3f(-4,-1.5,-10.0);
         glEnd();
 
-        glColor3f(PINK);
+        glColor3f(PINK_HALL);
         glBegin(GL_QUADS);  // Wall 2
             glVertex3f(0.88,2.6,-10.0);
             glVertex3f(4,2.6,-10.0);
             glVertex3f(4,-1.5,-10.0);
             glVertex3f(0.88,-1.5,-10.0);
-        glEnd();
-
-        glColor3f(0.4f, 0.0f, 0.0f);
-        glBegin(GL_QUADS);  // Roof
-            glVertex3f(-2.2,0.5,0);
-            glVertex3f(2.2,0.5,0);
-            glVertex3f(2.2,-0.1,-1.25);
-            glVertex3f(-2.2,-0.1,-1.25);
         glEnd();
 
     glPopMatrix();
@@ -187,7 +185,7 @@ void drawHouse(){
     glPushMatrix();
     glTranslatef(0.0f, 1.3f, 0.0f);
 
-        glColor3f(PINK);
+        glColor3f(PINK_HALL);
         glBegin(GL_QUADS);  // Right Hall Wall
             glVertex3f(0.88,2.6,-10.0);
             glVertex3f(0.88,2.6,-15.0);
@@ -195,7 +193,7 @@ void drawHouse(){
             glVertex3f(0.88,-1.5,-10.0);
         glEnd();
 
-        glColor3f(PINK);
+        glColor3f(PINK_HALL);
         glBegin(GL_QUADS);  // Left Hall Wall
             glVertex3f(-0.88,2.6,-10.0);
             glVertex3f(-0.88,2.6,-15.0);
@@ -248,7 +246,77 @@ void drawHouse(){
         glEnd();
 
     glPopMatrix();
+
+
+    // DETAILS
+
+    // Pilaster 1
+    glPushMatrix();
+        glTranslatef(-2, 0, -2);
+        glRotatef(-90, 1, 0, 0);
+        glColor3f(0.78f, 0.823f, 0.824f);
+        gluCylinder(quadratic, 0.28, 0.28, 3, 30, 30);
+    glPopMatrix();
+
+
+    // Pilaster 2
+    glPushMatrix();
+        glTranslatef(-2, 0, -5);
+        glRotatef(-90, 1, 0, 0);
+        glColor3f(0.78f, 0.823f, 0.824f);
+        gluCylinder(quadratic, 0.28, 0.28, 3, 30, 30);
+    glPopMatrix();
+
+    // Pilaster 3
+    glPushMatrix();
+        glTranslatef(2, 0, -5);
+        glRotatef(-90, 1, 0, 0);
+        glColor3f(0.78f, 0.823f, 0.824f);
+        gluCylinder(quadratic, 0.28, 0.28, 3, 30, 30);
+    glPopMatrix();
+
+    // Pilaster 4
+    glPushMatrix();
+        glTranslatef(2, 0, -2);
+        glRotatef(-90, 1, 0, 0);
+        glColor3f(0.78f, 0.823f, 0.824f);
+        gluCylinder(quadratic, 0.28, 0.28, 3, 30, 30);
+    glPopMatrix();
+
+
+    // OBJ 1
+    glPushMatrix();
+        glTranslatef(2, 0, -20);
+        glRotatef(-90, 1, 0, 0);
+        glColor3f(1, 0.8, 0.89); //change color after
+        gluCylinder(quadratic, 0.28, 0.28, 1.5, 30, 30);
+    glPopMatrix();
+
+    // Cannon 1
+    glPushMatrix();
+        glTranslatef(1, 0.1, -20.5);
+        glRotatef(-20, 1, 0, 0);
+        glColor3f(BLACK);
+        gluCylinder(quadratic, 0.28, 0.1, 1.5, 30, 30);
+    glPopMatrix();
+
+    // Cannon 2
+    glPushMatrix();
+        glTranslatef(3, 0.1, -20.5);
+        glRotatef(-20, 1, 0, 0);
+        glColor3f(BLACK);
+        gluCylinder(quadratic, 0.28, 0.1, 1.0, 30, 30);
+    glPopMatrix();
+
+    // Cannon 3
+    glPushMatrix();
+        glTranslatef(1.9, 0.2, -18.8);
+        glRotatef(-20, -30, 45, 0);
+        glColor3f(BLACK);
+        gluCylinder(quadratic, 0.18, 0.05, 0.5, 30, 30);
+    glPopMatrix();
 }
+
 
 void drawDoor() {
 
