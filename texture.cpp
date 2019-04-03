@@ -179,11 +179,12 @@ void loadTextureFromFile(char const *filename, int index) {
 void loadTextures() {
 
 	loadTextureFromFile("img/floor.png", 0);
-	loadTextureFromFile("img/wall.png", 1);
+	loadTextureFromFile("img/wal2.png", 1);
 	loadTextureFromFile("img/window.jpg", 2);
     loadTextureFromFile("img/door.jpg", 3);
     loadTextureFromFile("img/column4.png", 4);
     loadTextureFromFile("img/cannon2.png", 5);
+    loadTextureFromFile("img/facade.png", 6);
 
 }
 

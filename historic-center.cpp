@@ -15,20 +15,43 @@ GLUquadricObj *quadratic;
 float lx = 0.0f, lz = -1.0f;
 
 // XZ position of the camera
-float x = 0.0f, z = 7.0f;
+float x = 0.0f, z = 10.0f;
 
 // Angles
 float door_angle = 0.0f;
 float angle = 0.0f;
 
 void init(void) {
-    
+
     // sky color
-    quadratic = gluNewQuadric();
     glClearColor(0.0, 0.7, 1.0, 1.0);
+
+    GLfloat luzAmbiente[4] = {0.4, 0.4, 0.4, 1.0};
+    GLfloat luzDifusa[4] = {1.5, 1.5, 1.5, 1.0};	// "cor"
+    GLfloat luzEspecular[4] = {3.0, 5.0, 2.0, 1.0}; // "brilho"
+    GLfloat posicaoLuz[4] = {-5, -2, -3, 1.0};
+
+    GLfloat especularidade[4] = {0.5,0.5,0.5,1.0};
+    GLint especMaterial = 60;
+
+    // Gouraud
+    glShadeModel(GL_SMOOTH);
+
+    glMaterialfv(GL_FRONT,GL_SPECULAR, especularidade);
+    glMateriali(GL_FRONT,GL_SHININESS,especMaterial);
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente);
+
+    glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, luzDifusa );
+    glLightfv(GL_LIGHT0, GL_SPECULAR, luzEspecular );
+    glLightfv(GL_LIGHT0, GL_POSITION, posicaoLuz );
+    
+    quadratic = gluNewQuadric();
 	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
 	loadTextures();
 
 }
@@ -154,6 +177,19 @@ void drawHouse() {
             glVertex3f(3.5, -1.5, 1.1);
             glTexCoord2f(0.0f, 0.0f);
             glVertex3f(2.5, -1.5, 1.1);
+        glEnd();
+
+        // Facade
+        glBindTexture(GL_TEXTURE_2D, texture_id[6]);
+        glBegin(GL_QUADS);
+            glTexCoord2f(0.0f, 1.0f);
+            glVertex3f(-3.5, 0.4, 1.1);
+            glTexCoord2f(1.0f, 1.0f);
+            glVertex3f(3.5, 0.4, 1.1);
+            glTexCoord2f(1.0f, 0.0f);
+            glVertex3f(3.5, 0.85, 1.1);
+            glTexCoord2f(0.0f, 0.0f);
+            glVertex3f(-3.5, 0.85, 1.1);
         glEnd();
 
         // Front Windows
